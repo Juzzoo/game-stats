@@ -19,7 +19,7 @@ After your initial implementation, add/commit/push!
 
 Try running the tests and see if your solution passes. We are only trying to get the tests for gameCount to pass in this wave, all other tests will still fail because you have not implemented the other methods. Fix any bugs you find.
 
-Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negativs score, etc.
+Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negatives score, etc.
 
 Add/commit/push!
 
@@ -37,7 +37,7 @@ After your initial implementation, add/commit/push!
 
 Try running the tests and see if your solution passes. We are only trying to get the tests for gameCount to pass in this wave, all other tests will still fail because you have not implemented the other methods. Fix any bugs you find.
 
-Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negativs score, etc.
+Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negatives score, etc.
 
 Add/commit/push!
 
@@ -51,7 +51,7 @@ After your initial implementation, add/commit/push!
 
 Try running the tests and see if your solution passes. We are only trying to get the tests for gameCount to pass in this wave, all other tests will still fail because you have not implemented the other methods. Fix any bugs you find.
 
-Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negativs score, etc.
+Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negatives score, etc.
 
 Add/commit/push!
 
@@ -65,11 +65,11 @@ After your initial implementation, add/commit/push!
 
 Try running the tests and see if your solution passes. We are only trying to get the tests for gameCount to pass in this wave, all other tests will still fail because you have not implemented the other methods. Fix any bugs you find.
 
-Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negativs score, etc.
+Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negatives score, etc.
 
 Add/commit/push!
 
-## Wave 4: highestAverageScorer
+## Wave 5: highestAverageScorer
 
 Implement highestAverageScorer.
 
@@ -79,11 +79,11 @@ After your initial implementation, add/commit/push!
 
 Try running the tests and see if your solution passes. We are only trying to get the tests for gameCount to pass in this wave, all other tests will still fail because you have not implemented the other methods. Fix any bugs you find.
 
-Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negativs score, etc.
+Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negatives score, etc.
 
 Add/commit/push!
 
-## Wave 5: sortedScores (OPTIONAL)
+## Wave 6: sortedScores (OPTIONAL)
 
 This wave is optional.
 
@@ -93,7 +93,7 @@ After your initial implementation, add/commit/push!
 
 Try running the tests and see if your solution passes. We are only trying to get the tests for gameCount to pass in this wave, all other tests will still fail because you have not implemented the other methods. Fix any bugs you find.
 
-Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negativs score, etc.
+Then, add more tests! Consider things like what if we only have one person, what if that person has games with a negatives score, etc.
 
 Add/commit/push!
 
