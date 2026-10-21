@@ -69,7 +69,7 @@ Then, add more tests! Consider things like what if we only have one person, what
 
 Add/commit/push!
 
-## Wave 4: highestAverageScorer
+## Wave 5: highestAverageScorer
 
 Implement highestAverageScorer.
 
@@ -83,7 +83,7 @@ Then, add more tests! Consider things like what if we only have one person, what
 
 Add/commit/push!
 
-## Wave 5: sortedScores (OPTIONAL)
+## Wave 6: sortedScores (OPTIONAL)
 
 This wave is optional.
 
