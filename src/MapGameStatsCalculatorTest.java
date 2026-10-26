@@ -329,4 +329,33 @@ public class MapGameStatsCalculatorTest {
   }
 
   // Add more tests here!
+  @Test
+public void gameCountReturnsOneForSingleGame() {
+  // Arrange
+  String scoreData = "Nupur 10\n";
+  GameStatsCalculator calculator =
+      new MapGameStatsCalculator(new Scanner(scoreData));
+
+  // Act
+  int actual = calculator.gameCount("Nupur");
+
+  // Assert
+  assertEquals(1, actual);
+}
+
+@Test
+public void gameCountIncludesNegativeScores() {
+  // Arrange
+  String scoreData = "Nupur -10\n"
+      + "Nupur 20\n"
+      + "Nupur -5\n";
+  GameStatsCalculator calculator =
+      new MapGameStatsCalculator(new Scanner(scoreData));
+
+  // Act
+  int actual = calculator.gameCount("Nupur");
+
+  // Assert
+  assertEquals(3, actual);
+}
 }
