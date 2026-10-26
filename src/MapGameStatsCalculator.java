@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class MapGameStatsCalculator implements GameStatsCalculator {
 
@@ -19,20 +21,29 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
    * }
    */
   private Map<String, Integer> gameCounts;
+  private Map<String, List<Integer>> gameScores;
 
   // For some waves you will need to add more private instance variables here!
 
 
 
   public MapGameStatsCalculator(Scanner scoreInput) {
-    gameCounts = new HashMap<>();
+  gameCounts = new HashMap<>();
+  gameScores = new HashMap<>();
 
-    while(scoreInput.hasNext()) {
-  String name = scoreInput.next();
-  int score = scoreInput.nextInt();
+  while(scoreInput.hasNext()) {
+    String name = scoreInput.next();
+    int score = scoreInput.nextInt();
 
-  //game count
-  gameCounts.put(name, gameCounts.getOrDefault(name, 0) + 1);
+    //game count
+    gameCounts.put(name, gameCounts.getOrDefault(name, 0) + 1);
+
+    //game score
+    if (!gameScores.containsKey(name)) {
+      gameScores.put(name, new ArrayList<>());
+    }
+    gameScores.get(name).add(score);
+  }
 }
   }
 
@@ -57,13 +68,10 @@ public int gameCount(String person) {
    * @throws NoSuchElementException if the person does not exist in the score data
    */
   @Override
-  public int highScore(String person) {
-    // TODO: remove this exception once you have implemented your method!
-    throw new UnsupportedOperationException("Unimplemented method 'highScore'");
-
-    // Uncomment this and have it as your first line once you remove the UnsupportedOperationException
-    //checkPerson(person);
-  }
+public int highScore(String person) {
+  checkPerson(person);
+  return Collections.max(gameScores.get(person));
+}
 
   /**
    * Returns the name of the person who has the highest score.
