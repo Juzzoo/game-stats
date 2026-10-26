@@ -1,10 +1,10 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class MapGameStatsCalculator implements GameStatsCalculator {
 
@@ -28,23 +28,20 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
 
 
   public MapGameStatsCalculator(Scanner scoreInput) {
-  gameCounts = new HashMap<>();
-  gameScores = new HashMap<>();
+    gameCounts = new HashMap<>();
+    gameScores = new HashMap<>();
 
-  while(scoreInput.hasNext()) {
-    String name = scoreInput.next();
-    int score = scoreInput.nextInt();
+    while(scoreInput.hasNext()) {
+      String name = scoreInput.next();
+      int score = scoreInput.nextInt();
+      //game count
+      gameCounts.put(name, gameCounts.getOrDefault(name, 0) + 1);
 
-    //game count
-    gameCounts.put(name, gameCounts.getOrDefault(name, 0) + 1);
-
-    //game score
-    if (!gameScores.containsKey(name)) {
-      gameScores.put(name, new ArrayList<>());
+      //game score
+      if (!gameScores.containsKey(name)) {
+       gameScores.put(name, new ArrayList<>());
+        } gameScores.get(name).add(score);
     }
-    gameScores.get(name).add(score);
-  }
-}
   }
 
   /**
@@ -55,10 +52,11 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
    * @throws NoSuchElementException if the person does not exist in the score data
    */
   @Override
-public int gameCount(String person) {
-  checkPerson(person);
-  return gameCounts.get(person);
-}
+  public int gameCount(String person) {
+    checkPerson(person);
+    return gameCounts.get(person);
+
+  }
 
   /**
    * Returns the highest score a person has gotten.
@@ -68,10 +66,10 @@ public int gameCount(String person) {
    * @throws NoSuchElementException if the person does not exist in the score data
    */
   @Override
-public int highScore(String person) {
-  checkPerson(person);
-  return Collections.max(gameScores.get(person));
-}
+  public int highScore(String person) {
+    checkPerson(person);
+    return Collections.max(gameScores.get(person));
+  }
 
   /**
    * Returns the name of the person who has the highest score.
@@ -83,7 +81,7 @@ public int highScore(String person) {
    * @throws NoSuchElementException if there is no score data
    */
   @Override
-public String highestScorer() {
+  public String highestScorer() {
   checkScoreData();
 
   String best = null;
@@ -102,7 +100,6 @@ public String highestScorer() {
 
   return best;
 }
-
   /**
    * Returns the average score a person has gotten.
    * 
@@ -112,11 +109,14 @@ public String highestScorer() {
    */
   @Override
   public double getAverageScore(String person) {
-    // TODO: remove this exception once you have implemented your method!
-    throw new UnsupportedOperationException("Unimplemented method 'getAverageScore'");
+    checkPerson(person);
 
-    // Uncomment this and have it as your first line once you remove the UnsupportedOperationException
-    //checkPerson(person);
+    List<Integer> scores = gameScores.get(person);
+    int total = 0;
+    for(int score: scores){
+      total += score;
+    }
+    return (double) total / scores.size();
   }
 
   /**
@@ -130,12 +130,23 @@ public String highestScorer() {
    */
   @Override
   public String highestAverageScorer() {
-    // TODO: remove this exception once you have implemented your method!
-    throw new UnsupportedOperationException("Unimplemented method 'highestAverageScorer'");
+checkScoreData();
 
-    // Uncomment this and have it as your first line once you remove the UnsupportedOperationException
-    //checkScoreData();
+  String best = null;
+  double bestAverage = Double.NEGATIVE_INFINITY;
+
+  for (String person : gameScores.keySet()) {
+    double average = getAverageScore(person);
+
+    if (best == null
+        || average > bestAverage
+        || (average == bestAverage && person.compareTo(best) < 0)) {
+      best = person;
+      bestAverage = average;
   }
+}
+  return best;
+}
 
   /**
    * Returns a list of the scores a person has gotten, sorted in ascending order (lowest to highest).
@@ -146,11 +157,12 @@ public String highestScorer() {
    */
   @Override
   public List<Integer> sortedScores(String person) {
-    // TODO: remove this exception once you have implemented your method!
-    throw new UnsupportedOperationException("Unimplemented method 'sortedScores'");
+checkPerson(person);
 
-    // Uncomment this and have it as your first line once you remove the UnsupportedOperationException
-    //checkPerson(person);
+  List<Integer> sorted = new ArrayList<>(gameScores.get(person));
+  Collections.sort(sorted);
+
+  return sorted;
   }
   
   /**
