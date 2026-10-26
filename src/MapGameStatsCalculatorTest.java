@@ -358,4 +358,33 @@ public void gameCountIncludesNegativeScores() {
   // Assert
   assertEquals(3, actual);
 }
+
+@Test
+public void highScoreReturnsLaterScoreWhenPersonHasMultipleGames() {
+  // Arrange
+  String scoreData = "Nupur 10\n"
+      + "Nupur 40\n";
+  GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+  // Act
+  int actual = calculator.highScore("Nupur");
+
+  // Assert
+  assertEquals(40, actual);
+}
+
+@Test
+public void highScoreWorksWithNegativeScores() {
+  // Arrange
+  String scoreData = "Nupur -30\n"
+      + "Nupur -10\n"
+      + "Nupur -50\n";
+  GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+  // Act
+  int actual = calculator.highScore("Nupur");
+
+  // Assert
+  assertEquals(-10, actual);
+}
 }
