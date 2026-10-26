@@ -24,24 +24,16 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
 
 
 
-  
-public MapGameStatsCalculator(Scanner scoreInput) {
+  public MapGameStatsCalculator(Scanner scoreInput) {
     gameCounts = new HashMap<>();
 
-    while (scoreInput.hasNext()) {
-        String name = scoreInput.next();
-        int score = scoreInput.nextInt();
+    while(scoreInput.hasNext()) {
+  String name = scoreInput.next();
+  int score = scoreInput.nextInt();
 
-        if (!gameCounts.containsKey(name)) {
-            gameCounts.put(name, 1);
-        } else {
-            int oldCount = gameCounts.get(name);
-            gameCounts.put(name, oldCount + 1);
-        }
-    }
+  //game count
+  gameCounts.put(name, gameCounts.getOrDefault(name, 0) + 1);
 }
-
-
   }
 
   /**
@@ -51,13 +43,14 @@ public MapGameStatsCalculator(Scanner scoreInput) {
    * @return the number of games the person played
    * @throws NoSuchElementException if the person does not exist in the score data
    */
-  
-@Override
-public int gameCount(String person) {
-    checkPerson(person);
-    return gameCounts.get(person);
-}
+  @Override
+  public int gameCount(String person) {
+    // TODO: remove this exception once you have implemented your method!
+    throw new UnsupportedOperationException("Unimplemented method 'gameCount'");
 
+    // Uncomment this and have it as your first line once you remove the UnsupportedOperationException
+    //checkPerson(person);
+  }
 
   /**
    * Returns the highest score a person has gotten.
