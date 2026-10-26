@@ -387,4 +387,35 @@ public void highScoreWorksWithNegativeScores() {
   // Assert
   assertEquals(-10, actual);
 }
+
+@Test
+public void highestScorerReturnsAlphabeticallyWhenTied() {
+  // Arrange
+  String scoreData = "Xinting 50\n"
+      + "Baya 50\n"
+      + "Nupur 20\n";
+  GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+  // Act
+  String actual = calculator.highestScorer();
+
+  // Assert
+  assertEquals("Baya", actual);
+}
+
+@Test
+public void highestScorerWorksWithNegativeScores() {
+  // Arrange
+  String scoreData = "Nupur -30\n"
+      + "Baya -10\n"
+      + "Xinting -50\n";
+  GameStatsCalculator calculator = new MapGameStatsCalculator(new Scanner(scoreData));
+
+  // Act
+  String actual = calculator.highestScorer();
+
+  // Assert
+  assertEquals("Baya", actual);
+}
+
 }
