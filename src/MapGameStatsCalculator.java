@@ -24,15 +24,23 @@ public class MapGameStatsCalculator implements GameStatsCalculator {
 
 
 
-  public MapGameStatsCalculator(Scanner scoreInput) {
+  
+public MapGameStatsCalculator(Scanner scoreInput) {
     gameCounts = new HashMap<>();
 
-    while(scoreInput.hasNext()) {
-      String name = scoreInput.next();
-      int score = scoreInput.nextInt();
+    while (scoreInput.hasNext()) {
+        String name = scoreInput.next();
+        int score = scoreInput.nextInt();
 
-      // TODO: add logic here to use the name and score to fill your map(s)!
+        if (!gameCounts.containsKey(name)) {
+            gameCounts.put(name, 1);
+        } else {
+            int oldCount = gameCounts.get(name);
+            gameCounts.put(name, oldCount + 1);
+        }
     }
+}
+
   }
 
   /**
